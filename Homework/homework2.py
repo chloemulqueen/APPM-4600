@@ -18,7 +18,7 @@ for curr in range(len(t)):
     sum += t[curr] * y[curr]
     curr +=1 
     
-#print("the sum is: ", sum)
+print("the sum is: ", sum)
 
 # Part b
 R = 1.2
