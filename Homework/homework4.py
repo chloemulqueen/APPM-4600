@@ -138,6 +138,18 @@ def newton(f,fp,p0,tol,Nmax):
     return [p,pstar,info,it]
 driver_newt()
 
+# Problem 4
+def problem4():
+
+    f = lambda x: x**6 - x - 1
+    fp = lambda x: 6 * x**5 - 1
+    p0 = 1.2
+    Nmax = 100
+    tol = 1.e-14
+    (p,pstar,info,it) = newton(f,fp,p0,tol, Nmax)
+    print('the approximate root is', '%16.16e' % pstar)
+    print('the error message reads:', '%d' % info)
+    print('Number of iterations:', '%d' % it)
 
 # Problem 5
 def driver():
