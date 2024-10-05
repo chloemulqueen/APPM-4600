@@ -82,4 +82,38 @@ def Newton(x0,tol,Nmax):
     ier = 1
     return[xstar,ier,its]
 
-driver()
+#driver()
+
+# Problem 3
+def f(x, y, z):
+    return x**2 + 4*y**2 + 4*z**2 - 16
+
+def gradient(x, y, z):
+    fx = 2*x
+    fy = 8*y
+    fz = 8*z
+    return fx, fy, fz
+
+
+x = 1.0
+y = 1.0
+z = 1.0
+
+iterations = [(x, y, z, f(x, y, z))]
+
+for i in range(50):  
+    fx, fy, fz = gradient(x, y, z)
+    func= f(x, y, z)
+    
+    d = func / (fx**2 + fy**2 + fz**2)
+    
+    # Update values
+    x -= d * (fx / np.sqrt(fx**2 + fy**2 + fz**2))
+    y -= d * (fy / np.sqrt(fx**2 + fy**2 + fz**2))
+    z -= d * (fz / np.sqrt(fx**2 + fy**2 + fz**2))
+    
+    # Store the current values
+    iterations.append((x, y, z, f(x, y, z)))
+
+for i, (xi, yi, zi, fi) in enumerate(iterations):
+    print("Iteration", i, ": (x, y, z) = ",xi,",", yi,",", zi,",","f=", fi)
