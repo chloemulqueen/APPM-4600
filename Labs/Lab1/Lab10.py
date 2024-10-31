@@ -9,6 +9,7 @@ def driver():
 
 #  function you want to approximate
     f = lambda x: math.exp(x)
+    f2 = lambda x: 1/ (1+x**2)
 
 # Interval of interest    
     a = -1
@@ -56,7 +57,7 @@ def eval_legendre_expansion(f,a,b,w,n,x):
   pval = 0.0    
   for j in range(0,n+1):
       # make a function handle for evaluating phi_j(x)
-      phi_j = lambda x: ...
+      phi_j = lambda x: eval_legendre(n,x)[j]
       # make a function handle for evaluating phi_j^2(x)*w(x)
       phi_j_sq = lambda x: (phi_j(x))**2 * w(x)
       # use the quad function from scipy to evaluate normalizations
@@ -64,7 +65,7 @@ def eval_legendre_expansion(f,a,b,w,n,x):
       # make a function handle for phi_j(x)*f(x)*w(x)/norm_fac
       func_j = lambda x: (phi_j(x) * f(x) * w(x))/ norm_fac
       # use the quad function from scipy to evaluate coeffs
-      aj,err = quad(func_j(x), a, b)
+      aj,err = quad(func_j, a, b)
       # accumulate into pval
       pval = pval+aj*p[j] 
        
