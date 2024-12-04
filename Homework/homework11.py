@@ -22,7 +22,7 @@ def driver_part2():
     print("Trapezoidal solve, n set: ", CompTrap(a,b,n,func))
     print("Simpson solve, n set : ", CompSimp(a,b,n,func))
     
-    print("Using Scipy:", scipy.integrate.quad(func, a, b))
+    #print("Using Scipy:", scipy.integrate.quad(func, a, b))
     
     
 def CompTrap(a,b,n,func):
